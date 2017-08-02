@@ -1,0 +1,90 @@
+﻿@model PagedList.IPagedList<YF_Brad.Models.Doctor>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+@{
+    ViewBag.Title = "Doctors";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-success" })
+</p>
+@using (Html.BeginForm("Index", "Doctors", FormMethod.Get))
+{
+    <p>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5 searchBar">
+                    @Html.Label("SearchString", "Find by name: ", new { @class = "display-inline" })
+                    @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { @class = "form-control display-inline" })
+                </div>
+                <div class="col-md-1">
+                    <input type="submit" value="Search" class="btn btn-info" />
+                </div>
+                <div class="col-md-2 rpp">
+                    <h5>Results Per Page</h5>
+                </div>
+                <div class="col-md-4 pageLengths">
+                    <h4>@Html.ActionLink("10", "Index", new { pagelength = 10 })</h4>
+                    <h4>@Html.ActionLink("25", "Index", new { pagelength = 25 })</h4>
+                    <h4>@Html.ActionLink("50", "Index", new { pagelength = 50 })</h4>
+                </div>
+            </div>
+        </div>
+    </p>
+}
+<table class="table">
+    <tr>
+        <th>
+            Last Name
+        </th>
+        <th>
+            @Html.ActionLink("First Name", "Index", new { sortOrder = ViewBag.NameSortParm })
+        </th>
+        <th>
+            License #
+        </th>
+        <th>
+            Active
+        </th>
+        <th>
+            Job Title
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LicNum)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Active)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.JobTitle.Name)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.ID }, new { @class = "btn btn-warning" })
+            
+        </td>
+        <td>
+            @Html.ActionLink("Details", "Details", new { id = item.ID }, new { @class = "btn btn-primary" })
+        </td>
+    </tr>
+}
+
+</table>
+<br />
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))

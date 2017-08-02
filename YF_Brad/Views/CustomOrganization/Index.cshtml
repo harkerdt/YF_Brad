@@ -1,0 +1,83 @@
+﻿@model PagedList.IPagedList<YF_Brad.Models.ViewModels.OrgAddView>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+@{
+    ViewBag.Title = "Orgnaizations";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-success" })
+</p>
+@using (Html.BeginForm("Index", "Organizations", FormMethod.Get))
+{
+    <p>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-2 rpp">
+                    <h5>Results Per Page</h5>
+                </div>
+                <div class="col-md-4 pageLengths">
+                    <h4>@Html.ActionLink("10", "Index", new { pagelength = 10 })</h4>
+                    <h4>@Html.ActionLink("25", "Index", new { pagelength = 25 })</h4>
+                    <h4>@Html.ActionLink("50", "Index", new { pagelength = 50 })</h4>
+                </div>
+            </div>
+        </div>
+    </p>
+}
+<table class="table">
+    <tr>
+        <th>
+            @Html.ActionLink("Name", "Index", new { sortOrder = ViewBag.NameSortParm })
+        </th>
+        <th>
+            Phone
+        </th>
+        <th>
+            Fax
+        </th>
+        <th>
+            @Html.ActionLink("Org Type", "Index", new { sortOrder = ViewBag.OrgTypeSortParm })
+        </th>
+        <th>
+            Address
+        </th>
+        <th></th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Phone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Fax)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrgType)
+        </td>
+        <td>
+            @item.Address @item.Address2 @item.City @item.State @item.Zip @item.County
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }, new { @class = "btn btn-warning" })          
+        </td>
+        <td>
+            @Html.ActionLink("Details", "Details", new { id = item.ID }, new { @class = "btn btn-primary" })
+        </td>
+    </tr>
+}
+
+</table>
+<br />
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))

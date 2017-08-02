@@ -1,0 +1,23 @@
+﻿@{
+    ViewBag.Title = "Home";
+}
+
+<div class="jumbotron">
+    <h1>Yellow Fever</h1>
+    <p class="lead">This application directy interfaces with the Yellow Fever database.</p>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <h2>Organizations</h2>
+        <p>
+            View and edit all organizations.
+        </p>
+        @Html.ActionLink("Go", "Index", new { controller = "CustomOrganization" }, new { @class = "btn btn-primary" })
+    </div>
+    <div class="col-md-6">
+        <h2>Doctors</h2>
+        <p>View and edit all doctors.</p>
+        @Html.ActionLink("Go", "Index", new { controller = "Doctors" }, new { @class = "btn btn-primary" })
+    </div>
+</div>

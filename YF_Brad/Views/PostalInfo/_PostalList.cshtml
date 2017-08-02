@@ -1,0 +1,52 @@
+﻿@model IEnumerable<YF_Brad.Models.PostalInfo>
+
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.City)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.State)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Zip)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.County)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <span id=@("mycity" + item.ID)>@Html.DisplayFor(modelItem => item.City)</span>
+            </td>
+            <td>
+                <span id=@("mystate" + item.ID)>@Html.DisplayFor(modelItem => item.State)</span>
+</td>
+            <td>
+                <span id=@("myzip" + item.ID)>@Html.DisplayFor(modelItem => item.Zip)</span>
+            </td>
+            <td>
+                <span id=@("mycounty" + item.ID)>@Html.DisplayFor(modelItem => item.County, new { htmlAttributes = new { id = ("mycounty" + item.ID) } })</span>
+</td>
+            <td>
+                <a class="btn btn-info" onclick="passPostalID(@item.ID)">Select</a>
+            </td>
+        </tr>
+    }
+</table>
+<script>
+    var passPostalID = function (id) {
+        $('#PhysicalZip').val($(('#myzip' + id)).text())
+        $('#PhysicalCity').val($(('#mycity' + id)).text())
+        $('#PhysicalState').val($(('#mystate' + id)).text())
+        $('#PhysicalCounty').val($(('#mycounty' + id)).text())
+        $('#PhysicalPostalID').val(id)
+        $('#editor-container').modal('hide');
+    }
+</script>

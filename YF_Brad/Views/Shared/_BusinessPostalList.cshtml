@@ -1,0 +1,55 @@
+﻿@model IEnumerable<YF_Brad.Models.PostalInfo>
+
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title" id="myModal-label">Bootstrap Dialog</h4>
+        </div>
+        <div class="modal-body">
+            <table class="table">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.City)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.State)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Zip)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.County)
+                    </th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.City)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.State)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Zip)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.County)
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" id="btnOK" onclick="">OK</button>
+            <button class="btn btn-default" data-dismiss="modal" id="btnCancel">Cancel</button>
+        </div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+

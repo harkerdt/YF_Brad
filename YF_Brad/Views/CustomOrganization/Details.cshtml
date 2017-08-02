@@ -1,0 +1,200 @@
+﻿@model YF_Brad.Models.ViewModels.OrgAddView
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <hr />
+    <div class="container detailbox">
+        <div class="row details">
+            <div class="col-md-4">
+                <h3>Organization Info</h3>
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Name)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Name)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Phone)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Phone)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Fax)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Fax)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.OrgType)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.OrgType)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Active)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Active)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.CreatedBy)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.CreatedBy)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.CreatedDate)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.CreatedDate)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ModifiedBy)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.ModifiedBy)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ModifiedDate)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.ModifiedDate)
+                    </dd>
+                </dl>
+            </div>      
+            <div class="col-md-4">
+                <h3>Billing Address</h3>
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.BillingFirstName)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.BillingFirstName)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.BillingLastName)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.BillingLastName)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.BillingAddress)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.BillingAddress)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.BillingAddress2)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.BillingAddress2)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.BillingPostalID)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.BillingPostalID)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.BillingLongitude)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.BillingLongitude)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.BillingLatitude)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.BillingLatitude)
+                    </dd>
+                </dl>
+            </div>
+            <div class="col-md-4">
+                <h3>Physical Address</h3>
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Address)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Address)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Address2)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Address2)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.PostalID)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.PostalID)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Longitude)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Longitude)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Latitude)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Latitude)
+                    </dd>
+                </dl>
+            </div>
+        </div>
+     </div>
+</div>
+<br />
+<p>
+    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-info" })
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }, new { @class = "btn btn-warning" })
+</p>
